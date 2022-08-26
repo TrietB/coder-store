@@ -1,6 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { Box , Link } from '@mui/material'
+import { BrowserRouter } from 'react-router-dom'
+import Router from './routes'
+import { AuthProvider } from './contexts/AuthContext'
+import ThemeProvider from './contexts/ThemeProvider'
 
 function CopyRight() {
   return (
@@ -18,14 +22,13 @@ function CopyRight() {
 
 function App() {
   return (
-    <>
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom align="center">
-          My new React app
-        </Typography>
-        <CopyRight />
-      </Box>
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          <Router/>
+        </ThemeProvider>        
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
